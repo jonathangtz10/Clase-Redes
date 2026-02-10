@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from werkzeug.security import check_password_hash
 import socket
 
-APP_USER = "xxxxxxxxxxxxxxxxx" 
+APP_USER = "xxxxxxxxxxxxxxxxxx" 
 APP_PW_HASH = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"     
 SECRET_KEY = "xxxxxx" # Pon una clave larga y aleatoria 
 
