@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from werkzeug.security import check_password_hash
 from datetime import datetime
 import socket
 
-APP_USER = "admin"
-APP_PASS = "1234"
+APP_USER = "Alejandro"
+APP_PASS = "PEGA_AQUI_EL_HASH_QUE_TE_GENERO_EL_COMANDO"
 SECRET_KEY = "REDES_A0_LDR_2026"
 
 TCP_HOST = "127.0.0.1"
@@ -15,7 +16,7 @@ TCP_PORT = 5001
 SERIAL_LABEL = "/dev/ttyACM0"
 SERIAL_BAUD = 115200
 
-app = Flask(__name__, template_folder="templates", static_folder="static", static_url_path="/static")
+app = Flask(_name_, template_folder="templates", static_folder="static", static_url_path="/static")
 app.secret_key = SECRET_KEY
 
 def is_logged_in():
@@ -100,7 +101,7 @@ def login():
         user = request.form.get("username", "").strip()
         pw = request.form.get("password", "").strip()
 
-        if user == APP_USER and pw == APP_PASS:
+        if user == APP_USER and check_password_hash(APP_PASS, pw):
             session["logged_in"] = True
             return redirect(url_for("index"))
 
@@ -146,5 +147,5 @@ def ping():
         return jsonify({"ok": False, "error": "No autorizado"}), 401
     return jsonify({"ok": True})
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     app.run(host="0.0.0.0", port=5000, debug=True)
